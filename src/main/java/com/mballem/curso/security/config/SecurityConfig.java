@@ -17,11 +17,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-	
-		
+		//acessos publicos liberados
 		http.authorizeRequests()
 		.antMatchers("/webjars/**" , "/css/**", "/image/**" , "/js/**").permitAll()
 		.antMatchers("/" , "/home").permitAll()
+		
+		//acessos privados admin
+		.antMatchers("/u/**").hasAnyAuthority("ADMIN")
+		
+		
+		//acessos privados medicos
+		.antMatchers("/medicos/**").hasAnyAuthority("MEDICO")
 		
 		.anyRequest().authenticated()
 		.and()
