@@ -45,7 +45,6 @@ public class EspecialidadeController {
 		return "especialidade/especialidade";
 	}
 	
-	
 	@GetMapping("/excluir/{id}")
 	public String preEditar(@PathVariable("id") Long id , RedirectAttributes attr) {
 		service.remover(id);
