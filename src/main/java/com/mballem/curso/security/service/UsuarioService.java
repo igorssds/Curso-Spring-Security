@@ -75,4 +75,9 @@ public class UsuarioService implements UserDetailsService{
 		usuario.setSenha(crypt);
 		repository.save(usuario);		
 	}
+
+	public Usuario buscarPorId(Long id) {
+		
+		return repository.findById(id).get();
+	}
 }
